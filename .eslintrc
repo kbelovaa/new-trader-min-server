@@ -1,0 +1,45 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules" : {
+    "object-curly-newline": "off",
+    "comma-dangle": "off",
+    "max-len": "off",
+    "no-alert": "off",
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "max-classes-per-file": "off",
+    "default-param-last": "off",
+    "no-useless-constructor": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "class-methods-use-this": ["error", {
+      "exceptMethods": [
+        "render",
+        "getInitialState",
+        "getDefaultProps",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount",
+        "componentDidCatch",
+        "print"
+      ]
+    }]
+  },
+  "extends": ["airbnb-base"],
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "babel",
+    "import"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  }
+}
