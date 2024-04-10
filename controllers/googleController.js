@@ -35,7 +35,7 @@ class GoogleController {
       const schedule = response.data.values;
       return res.status(200).json({ schedule });
     } catch (error) {
-      console.error('Error when reading data:', error.message);
+      return res.status(200).json({ success: false, message: error });
     }
   }
 
@@ -59,14 +59,12 @@ class GoogleController {
           valueInputOption: 'RAW',
           resource: { values },
         })
-        .then(() =>
-          sheets.spreadsheets.values.update({
-            spreadsheetId,
-            range: `Schedule!A${row}`,
-            valueInputOption: 'RAW',
-            resource: { values: bookedValue },
-          })
-        )
+        .then(() => sheets.spreadsheets.values.update({
+          spreadsheetId,
+          range: `Schedule!A${row}`,
+          valueInputOption: 'RAW',
+          resource: { values: bookedValue },
+        }))
         .then(() => {
           transporter.sendMail(mailOptions);
         })
